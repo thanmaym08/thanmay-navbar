@@ -1,5 +1,11 @@
 
-import Image from "next/image";
+import Image from "next/image";// pages/index.tsx
+
+
+
+
+
+
 
 export default function Home() {
     return (
@@ -30,6 +36,7 @@ export default function Home() {
                     </div>
                 </div>
             </section>
+            <Features />
 
 
             {/* Footer */}

@@ -15,8 +15,6 @@ export default function Home() {
         />
       </div >
 
-      <div class=" text-yellow-600 mx-7 font-roboto  "><h1>hello</h1> </div>
-      <div class="text-5xl text-white-800 mx-5 font-bold text-left "><h1>Hello i am mx 5 with l</h1></div>
 
 
 
