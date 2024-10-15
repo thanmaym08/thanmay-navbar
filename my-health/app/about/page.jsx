@@ -1,32 +1,48 @@
 
-// pages/about.js
-import Image from 'next/image';
-const About = () => {
+import Image from "next/image";
+
+export default function Home() {
     return (
-        <div className="container mx-auto p-4">
-            <br />
-            <br />
-            <h1 className="text-3xl font-bold mb-4">About Us</h1>
-            <p className="mb-4">
-                Welcome to Health One, where we believe that everyone deserves access to quality healthcare. Our mission is to provide comprehensive health services that cater to the needs of our diverse community. With a team of dedicated professionals and state-of-the-art facilities, we strive to deliver exceptional care and support to our patients at every stage of their journey.
-            </p>
-            <p className="mb-4">
-                At Health One, we prioritize preventative care and health education, empowering individuals to take charge of their health. Our wide range of services includes primary care, specialist consultations, wellness programs, and mental health support, all designed to ensure holistic well-being. We are committed to fostering a compassionate environment that encourages open communication and collaboration between our patients and healthcare providers.
-            </p>
-            <p>
-                Thank you for choosing Health One. We look forward to partnering with you on your path to better health and well-being.
-            </p>
+        <div className="min-h-screen flex flex-col">
+            {/* Navbar */}
+            <header className="bg-blue-600 p-4">
+                <nav className="container mx-auto flex justify-between items-center">
+                    <div>
+// image //
+                    </div>
+                    <ul className="flex space-x-6 text-white">
+                        <li><a href="#home" className="hover:text-gray-300">Home</a></li>
+                        <li><a href="#about" className="hover:text-gray-300">About</a></li>
+                        <li><a href="#services" className="hover:text-gray-300">Services</a></li>
+                        <li><a href="#contact" className="hover:text-gray-300">Contact</a></li>
+                    </ul>
+                </nav>
+            </header>
 
-            <img
-                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.avxBDkQAX_O4iJPTt_skRAHaE8%26pid%3DApi&f=1&ipt=d7a1d69e5e014570a2c8ac35219a8055bd8547dfd2ebd4b6530893c07355e6c2&ipo=images"
-                alt="Description of image"
-                width={500} // specify width
-                height={300} // specify height
-                className="rounded-lg" // optional styling
-            />
+            {/* Banner Section */}
+            <section id="home" className="flex-1 bg-cover bg-center" style={{ backgroundImage: 'url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ieNNUVG_hQuG--cITtxGOwHaEo%26pid%3DApi&f=1&ipt=ad0c399af62f7a43668cf225c59bb14c439437344e95f7f352be84099a341d33&ipo=images")' }}>
+                <div className="bg-black bg-opacity-50 text-white text-center py-24">
+                    <h1 className="text-5xl font-bold mb-4">Welcome to Our Platform</h1>
+                    <p className="text-xl mb-8">The best solution for all your health needs.</p>
+                    <div>
+                        <a href="#about" className="bg-blue-500 hover:bg-blue-700 text-white py-3 px-6 rounded-lg mr-4">Get Started</a>
+                        <a href="#contact" className="bg-white hover:bg-gray-300 text-black py-3 px-6 rounded-lg">Contact Us</a>
+                    </div>
+                </div>
+            </section>
 
+
+            {/* Footer */}
+            <footer className="bg-gray-800 text-white py-8">
+                <div className="container mx-auto text-center">
+                    <p className="text-sm">&copy; 2024 Your Company. All rights reserved.</p>
+                    <ul className="flex justify-center space-x-4 mt-4">
+                        <li><a href="#privacy" className="hover:underline">Privacy Policy</a></li>
+                        <li><a href="#terms" className="hover:underline">Terms of Service</a></li>
+                        <li><a href="#support" className="hover:underline">Support</a></li>
+                    </ul>
+                </div>
+            </footer>
         </div>
     );
-};
-
-export default About;
+}
