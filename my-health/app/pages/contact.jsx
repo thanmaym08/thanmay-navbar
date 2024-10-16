@@ -43,45 +43,42 @@ export default function ContactForm() {
         <>
             <form
                 onSubmit={handleSubmit}
-                className="bg-black py-4 mt-4 border-t flex flex-col gap-5 h-16"
+                className="py-4 mt-4 border-t flex flex-col gap-5"
             >
-                <div>
+                <div className=" flex flex-col gap-2">
                     <label htmlFor="fullname">Full Name</label>
                     <input
                         onChange={(e) => setFullname(e.target.value)}
                         value={fullname}
                         type="text"
-                        className="text-black font-bold"
                         id="fullname"
                         placeholder="John Doe"
-
                     />
                 </div>
 
-                <div>
+                <div className=" flex flex-col gap-2">
                     <label htmlFor="email">Email</label>
                     <input
                         onChange={(e) => setEmail(e.target.value)}
                         value={email}
                         type="text"
-                        className="mx-8 text-black font-bold"
                         id="email"
                         placeholder="john@gmail.com"
                     />
                 </div>
 
-                <div>
-                    <label htmlFor="message">Message</label>
+                <div className=" flex flex-col gap-2">
+                    <label htmlFor="message">Your Message</label>
                     <textarea
                         onChange={(e) => setMessage(e.target.value)}
                         value={message}
-                        className=" h-20 mt-2 mx-2 text-black font-bold"
+                        className="h-32 shadow-md px-6 py-2 border border-slate-300"
                         id="message"
                         placeholder="Type your message here..."
                     ></textarea>
                 </div>
 
-                <button className="bg-violet-500 p-3 text-white font-bold" type="submit">
+                <button className="bg-green-700 p-3 text-white font-bold" type="submit">
                     Send
                 </button>
             </form>
