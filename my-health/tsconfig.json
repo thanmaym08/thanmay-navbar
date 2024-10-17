@@ -28,7 +28,7 @@
     "**/*.ts",
     "**/*.tsx",
     "components/navbar.js",
-    "components/banner.jsx",
+    "components/banner.tsx",
     "components/features.tsx"
   ],
   "exclude": [

@@ -7,14 +7,17 @@ export default function Navbar() {
     return (
         <div className="flex flex-col">
             {/* Navbar */}
-            <header className="bg-blue-600 p-3 fixed top-0 w-full z-50">
+            <header className="bg-gray-700-600 p-3 fixed top-0 w-full z-50">
                 <nav className="container mx-auto flex justify-between items-center">
                     <div className="flex items-center space-x-3 rounded-full">
                         <Image
                             src="/assets/logo.png"
                             alt="HealthOne Logo"
+                            className="rounded-3xl"
                             width={50}
-                            height={50}
+                            height={50
+
+                            }
                         />
                         <div className="text-white text-xl font-semibold">Health One</div>
                     </div>
