@@ -29,7 +29,7 @@
     "**/*.tsx",
     "components/navbar.js",
     "components/banner.jsx",
-    "components/features.js"
+    "components/features.tsx"
   ],
   "exclude": [
     "node_modules"
