@@ -3,44 +3,38 @@ const people = [
 
     {
         name: 'Mani Bharadwaj',
-        role: 'Full-stack Developer',
+        role: 'Fullstack Developer',
         imageUrl:
             'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
     },
-    {
-        name: 'Shashank',
-        role: 'Back-end Developer',
-        imageUrl:
-            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    },
-    // More people...
     {
         name: 'Manjunath',
-        role: 'Back-end Developer',
+        role: 'Backend Developer',
         imageUrl:
             'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    },
-    // More people...
-
-    {
+    }, {
+        name: 'Shashank',
+        role: 'Backend Developer',
+        imageUrl:
+            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+    }, {
         name: 'Thanmay',
-        role: 'Front-end Developer',
+        role: 'Frontend Developer',
         imageUrl:
             'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
     },
     {
-        name: 'Pavan kumar',
-        role: 'Front-end Developer',
+        name: 'Pavan Kumar',
+        role: 'Frontend Developer',
         imageUrl:
             'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
     },
-    // More people...
     // More people...
 ]
 
-export default function Example() {
+export default function Team() {
     return (
-        <div className="bg-white py-24 sm:py-32">
+        <div id="team" className="bg-white py-24 sm:py-32">
             <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
                 <div className="max-w-2xl">
                     <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Meet our leadership</h2>
@@ -62,6 +56,8 @@ export default function Example() {
                         </li>
                     ))}
                 </ul>
+
+
             </div>
         </div>
     )
