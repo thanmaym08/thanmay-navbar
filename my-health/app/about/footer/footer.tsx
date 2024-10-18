@@ -9,34 +9,26 @@ const ICONS = [
     { name: "logo-instagram", link: "https://www.instagram.com" },
 ];
 
-// Menu links data
-const PRODUCTS = [
-    { name: "UI/UX", link: "#" },
-    { name: "Web & mobile development", link: "#" },
-    { name: "Digital marketing", link: "#" },
-];
-
 const RESOURCES = [
-    { name: "Industries and innovation trends", link: "#" },
-    { name: "Use cases", link: "#" },
+    { name: "Health Tips", link: "#" },
+    { name: "Patient Stories", link: "#" },
     { name: "Blog", link: "#" },
-    { name: "Online submit", link: "#" },
-    { name: "Event & activities", link: "#" },
+    { name: "FAQs", link: "#" },
+    { name: "Events & Workshops", link: "#" },
 ];
 
-const COMPANY = [
-    { name: "Diversity & inclusion", link: "#" },
-    { name: "About us", link: "#" },
+const ABOUT = [
+    { name: "Our Mission", link: "#" },
+    { name: "Team", link: "#" },
     { name: "News", link: "#" },
-    { name: "Customer Stories", link: "#" },
-    { name: "Online communities", link: "#" },
+    { name: "Community Outreach", link: "#" },
 ];
 
 const SUPPORT = [
-    { name: "Documentation", link: "#" },
-    { name: "Tutorial & guides", link: "#" },
-    { name: "Webinar", link: "#" },
-    { name: "Open-source", link: "#" },
+    { name: "Patient Support", link: "#" },
+    { name: "Insurance Information", link: "#" },
+    { name: "Feedback", link: "#" },
+    { name: "Contact Us", link: "#" },
 ];
 
 // Item component to display links
@@ -99,7 +91,7 @@ const Footer = () => {
         <div className="bg-gray-900 text-white">
             <div className="md:flex md:justify-between md:items-center sm:px-12 px-4 bg-[#ffffff19] py-7">
                 <h1 className="lg:text-4xl text-3xl md:mb-0 mb-6 lg:leading-normal font-semibold md:w-2/5">
-                    <span className="text-teal-400">Get</span> free business growth tips
+                    <span className="text-teal-400">Stay</span> healthy with expert tips
                 </h1>
                 <div>
                     <input
@@ -108,21 +100,17 @@ const Footer = () => {
                         className="text-gray-800 sm:w-72 w-full sm:mr-5 mr-1 lg:mb-0 mb-4 py-2.5 rounded px-2 focus:outline-none"
                     />
                     <button className="bg-teal-400 hover:bg-teal-500 duration-300 px-5 py-2.5 font-medium rounded-md text-white md:w-auto w-full">
-                        Request Code
+                        Subscribe
                     </button>
                 </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6 sm:px-8 px-5 py-16">
-                <Item Links={PRODUCTS} title="PRODUCTS" />
                 <Item Links={RESOURCES} title="RESOURCES" />
-                <Item Links={COMPANY} title="COMPANY" />
+                <Item Links={ABOUT} title="ABOUT US" />
                 <Item Links={SUPPORT} title="SUPPORT" />
             </div>
-            <div
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10
-      text-center pt-2 text-gray-400 text-sm pb-8"
-            >
-                <span>© 2024 Ultimatetopup. All rights reserved.</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 text-center pt-2 text-gray-400 text-sm pb-8">
+                <span>© 2024 Healthcare Center. All rights reserved.</span>
                 <span>Terms . Privacy Policy</span>
                 <SocialIcons Icons={ICONS} />
             </div>

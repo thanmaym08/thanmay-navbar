@@ -1,100 +1,152 @@
 "use client";
+import React, { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
-import { useState } from "react";
+const ContactUs: React.FC = () => {
+    const [formData, setFormData] = useState({
+        fullName: '',
+        email: '',
+        message: ''
+    });
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-export default function ContactForm() {
-    const [fullname, setFullname] = useState("");
-    const [email, setEmail] = useState("");
-    const [message, setMessage] = useState("");
-    const [error, setError] = useState([]);
-    const [success, setSuccess] = useState(false);
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = "https://kit.fontawesome.com/c32adfdcda.js";
+        script.crossOrigin = "anonymous";
+        document.body.appendChild(script);
 
-    const handleSubmit = async (e) => {
+        return () => {
+            document.body.removeChild(script);
+        };
+    }, []);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData(prevState => ({ ...prevState, [name]: value }));
+    };
+
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+        setIsModalOpen(true); // Open modal on form submission
+    };
 
-        console.log("Full name: ", fullname);
-        console.log("Email: ", email);
-        console.log("Message: ", message);
-
-        const res = await fetch("api/contact", {
-            method: "POST",
-            headers: {
-                "Content-type": "application/json",
-            },
-            body: JSON.stringify({
-                fullname,
-                email,
-                message,
-            }),
-        });
-
-        const { msg, success } = await res.json();
-        setError(msg);
-        setSuccess(success);
-
-        if (success) {
-            setFullname("");
-            setEmail("");
-            setMessage("");
-        }
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setFormData({ fullName: '', email: '', message: '' }); // Optionally reset form
     };
 
     return (
-        <>
-            <form
-                onSubmit={handleSubmit}
-                className="py-4 mt-4 border-t flex flex-col gap-5"
-            >
-                <div className=" flex flex-col gap-2">
-                    <label htmlFor="fullname">Full Name</label>
-                    <input
-                        onChange={(e) => setFullname(e.target.value)}
-                        value={fullname}
-                        type="text"
-                        id="fullname"
-                        placeholder="John Doe"
-                    />
-                </div>
+        <div className="bg-white min-h-screen">
+            <section className="relative pt-12 pb-12 z-30">
+                <div className="max-w-4xl mx-auto px-5">
+                    <div className="text-center mb-12">
+                        <h2 className="text-gray-800 font-bold text-5xl mb-5">Contact Us</h2>
+                        <p className="text-gray-800">
+                            Have questions? Reach out below or email us
+                        </p>
+                    </div>
 
-                <div className=" flex flex-col gap-2">
-                    <label htmlFor="email">Email</label>
-                    <input
-                        onChange={(e) => setEmail(e.target.value)}
-                        value={email}
-                        type="text"
-                        id="email"
-                        placeholder="john@gmail.com"
-                    />
-                </div>
+                    <div className="flex flex-wrap items-center justify-between">
+                        <div className="w-full md:w-1/2">
+                            <div className="mb-8 flex items-center">
+                                <div className="h-16 w-16 bg-white text-center rounded-full flex items-center justify-center">
+                                    <FontAwesomeIcon icon={faHome} className="text-2xl" />
+                                </div>
+                                <div className="ml-5">
+                                    <h4 className="text-teal-500 text-xl mb-1 font-bold">Address</h4>
+                                    <p className="text-gray-800">4671 Sugar Camp Road, Owatonna, Minnesota, 55060</p>
+                                </div>
+                            </div>
 
-                <div className=" flex flex-col gap-2">
-                    <label htmlFor="message">Your Message</label>
-                    <textarea
-                        onChange={(e) => setMessage(e.target.value)}
-                        value={message}
-                        className="h-32 shadow-md px-6 py-2 border border-slate-300"
-                        id="message"
-                        placeholder="Type your message here..."
-                    ></textarea>
-                </div>
+                            <div className="mb-8 flex items-center">
+                                <div className="h-16 w-16 bg-white text-center rounded-full flex items-center justify-center">
+                                    <FontAwesomeIcon icon={faPhone} className="text-2xl" />
+                                </div>
+                                <div className="ml-5">
+                                    <h4 className="text-teal-500 text-xl mb-1 font-bold">Phone</h4>
+                                    <p className="text-gray-800">571-457-2321</p>
+                                </div>
+                            </div>
 
-                <button className="bg-green-700 p-3 text-white font-bold" type="submit">
-                    Send
-                </button>
-            </form>
-
-            <div className="bg-slate-100 flex flex-col">
-                {error &&
-                    error.map((e, idx) => (
-                        <div
-                            key={idx}
-                            className={`${success ? "text-green-800" : "text-red-600"
-                                } px-5 py-2`}
-                        >
-                            {e}
+                            <div className="mb-8 flex items-center">
+                                <div className="h-16 w-16 bg-white text-center rounded-full flex items-center justify-center">
+                                    <FontAwesomeIcon icon={faEnvelope} className="text-2xl" />
+                                </div>
+                                <div className="ml-5">
+                                    <h4 className="text-teal-500 text-xl mb-1 font-bold">Email</h4>
+                                    <p className="text-gray-800">ntamerrwael@mfano.ga</p>
+                                </div>
+                            </div>
                         </div>
-                    ))}
-            </div>
-        </>
+
+                        <div className="w-full md:w-1/2 bg-gray-200 p-10 rounded-lg shadow-lg">
+                            <h2 className="font-bold text-2xl mb-4 text-indigo-500">Send Message</h2>
+                            <form onSubmit={handleSubmit} id="contact-form">
+                                <div className="mb-4">
+                                    <label className="block text-black font-bold mb-1" htmlFor="fullName">Full Name</label>
+                                    <input
+                                        type="text"
+                                        id="fullName"
+                                        required
+                                        name="fullName"
+                                        value={formData.fullName}
+                                        onChange={handleChange}
+                                        className="w-full border-2 border-green-500 bg-gray-100 text-black focus:outline-none focus:border-teal-500 py-2"
+                                    />
+                                </div>
+
+                                <div className="mb-4">
+                                    <label className="block text-gray-800 mb-1 font-bold" htmlFor="email">Email</label>
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        required
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        className="w-full border-2 border-green-500 bg-gray-100 text-black focus:outline-none focus:border-teal-500 py-2"
+                                    />
+                                </div>
+
+                                <div className="mb-4">
+                                    <label className="block text-gray-800 font-bold mb-1" htmlFor="message">Type your Message...</label>
+                                    <textarea
+                                        id="message"
+                                        required
+                                        name="message"
+                                        value={formData.message}
+                                        onChange={handleChange}
+                                        className="w-full border-2 border-gray-800 bg-gray-100 text-black focus:outline-none focus:border-teal-500 py-2"
+                                        rows={4}
+                                    ></textarea>
+                                </div>
+
+                                <input
+                                    type="submit"
+                                    value="Send"
+                                    className="w-full bg-teal-500 text-white font-semibold py-2 rounded hover:bg-white hover:text-teal-500 border border-green-500 transition duration-500 cursor-pointer"
+                                />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {isModalOpen && (
+                <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+                    <div className="bg-white p-5 text-gray-800 rounded-lg shadow-lg">
+                        <h2 className="text-lg text-black font-bold mb-2">Information Sent!</h2>
+                        <p className="mb-4">Your message has been sent successfully.</p>
+                        <button onClick={closeModal} className="mt-4 bg-teal-500 text-white py-2 px-4 rounded">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            )}
+        </div>
     );
-}
+};
+
+export default ContactUs;
