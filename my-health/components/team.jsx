@@ -1,52 +1,39 @@
+import React from 'react';
+
 const people = [
-
-
     {
         name: 'Mani Bharadwaj',
         role: 'Fullstack Developer',
-        imageUrl:
-            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+        imageUrl: '/assets/mani.png', // Use path relative to the public folder
     },
-
     {
         name: 'Manjunath',
         role: 'Backend Developer',
-        imageUrl:
-            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+        imageUrl: '/assets/manju.png',
     },
-
-
-
     {
         name: 'Thanmay',
         role: 'Frontend Developer',
-        imageUrl:
-            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+        imageUrl: '/assets/thanu.png',
     },
     {
         name: 'Shashank',
         role: 'Backend Developer',
-        imageUrl:
-            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+        imageUrl: '/assets/shank.png',
     },
-
-
-
     {
         name: 'Pavan Kumar',
         role: 'Frontend Developer',
-        imageUrl:
-            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+        imageUrl: '/assets/pavan.png',
     },
-    // More people...
-]
+];
 
 export default function Team() {
     return (
         <div id="team" className="bg-white py-24 sm:py-32">
             <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
                 <div className="max-w-2xl">
-                    <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Meet our team</h2>
+                    <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Meet our Team</h2>
                     <p className="mt-6 text-lg leading-8 text-gray-600">
                         "Meet our dedicated team of healthcare professionals committed to your well-being. Together, we bring expertise and compassion to every aspect of your health journey."
                     </p>
@@ -55,7 +42,7 @@ export default function Team() {
                     {people.map((person) => (
                         <li key={person.name}>
                             <div className="flex items-center gap-x-6">
-                                <img alt="" src={person.imageUrl} className="h-16 w-16 rounded-full" />
+                                <img alt={person.name} src={person.imageUrl} className="h-16 w-16 rounded-full" />
                                 <div>
                                     <h3 className="text-base font-semibold leading-7 tracking-tight text-gray-900">{person.name}</h3>
                                     <p className="text-sm font-semibold leading-6 text-indigo-600">{person.role}</p>
@@ -64,9 +51,7 @@ export default function Team() {
                         </li>
                     ))}
                 </ul>
-
-
             </div>
         </div>
-    )
+    );
 }
