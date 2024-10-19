@@ -2,14 +2,22 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
+
+interface FormData {
+    fullName: string;
+    email: string;
+    message: string;
+}
 
 const ContactUs: React.FC = () => {
-    const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState<FormData>({
         fullName: '',
         email: '',
         message: ''
     });
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+    const [isError, setIsError] = useState<boolean>(false);
 
     useEffect(() => {
         const script = document.createElement('script');
@@ -29,12 +37,24 @@ const ContactUs: React.FC = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        setIsModalOpen(true); // Open modal on form submission
+
+        // Convert formData to a plain object
+        const dataToSend: Record<string, unknown> = { ...formData };
+
+        emailjs.send('service_wgadpco', 'template_ce8kqqb', dataToSend, 'zEvMMrIqeFb667R3x') // Use your actual User ID here
+            .then((response: EmailJSResponseStatus) => {
+                console.log('Email sent successfully!', response.status, response.text);
+                setIsModalOpen(true);
+                setIsError(false);
+                setFormData({ fullName: '', email: '', message: '' });
+            }, (err) => {
+                console.error('Failed to send email:', err);
+                setIsError(true);
+            });
     };
 
     const closeModal = () => {
         setIsModalOpen(false);
-        setFormData({ fullName: '', email: '', message: '' }); // Optionally reset form
     };
 
     return (
@@ -43,9 +63,7 @@ const ContactUs: React.FC = () => {
                 <div className="max-w-4xl mx-auto px-5">
                     <div className="text-center mb-12">
                         <h2 className="text-gray-800 font-bold text-5xl mb-5">Contact Us</h2>
-                        <p className="text-gray-800">
-                            Have questions? Reach out below or email us
-                        </p>
+                        <p className="text-gray-800">Have questions? Reach out below or email us</p>
                     </div>
 
                     <div className="flex flex-wrap items-center justify-between">
@@ -59,7 +77,6 @@ const ContactUs: React.FC = () => {
                                     <p className="text-gray-800">4671 Sugar Camp Road, Owatonna, Minnesota, 55060</p>
                                 </div>
                             </div>
-
                             <div className="mb-8 flex items-center">
                                 <div className="h-16 w-16 bg-white text-center rounded-full flex items-center justify-center">
                                     <FontAwesomeIcon icon={faPhone} className="text-2xl" />
@@ -69,7 +86,6 @@ const ContactUs: React.FC = () => {
                                     <p className="text-gray-800">571-457-2321</p>
                                 </div>
                             </div>
-
                             <div className="mb-8 flex items-center">
                                 <div className="h-16 w-16 bg-white text-center rounded-full flex items-center justify-center">
                                     <FontAwesomeIcon icon={faEnvelope} className="text-2xl" />
@@ -140,6 +156,18 @@ const ContactUs: React.FC = () => {
                         <h2 className="text-lg text-black font-bold mb-2">Information Sent!</h2>
                         <p className="mb-4">Your message has been sent successfully.</p>
                         <button onClick={closeModal} className="mt-4 bg-teal-500 text-white py-2 px-4 rounded">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            )}
+
+            {isError && (
+                <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+                    <div className="bg-white p-5 text-red-800 rounded-lg shadow-lg">
+                        <h2 className="text-lg font-bold mb-2">Error!</h2>
+                        <p className="mb-4">There was an error sending your message. Please try again.</p>
+                        <button onClick={() => setIsError(false)} className="mt-4 bg-red-500 text-white py-2 px-4 rounded">
                             Close
                         </button>
                     </div>
